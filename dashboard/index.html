@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Launch Radar</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1>Token Launch Radar</h1>
+    <p class="sub"><span id="ncand"></span> protocols that record no token, ranked by the implied value of a token they might one day issue. Data: DefiLlama snapshot, <span id="asof"></span>. No protocol is hardcoded by name.</p>
+    <div id="method" class="method"></div>
+  </div>
+</header>
+<main class="wrap">
+  <div class="controls">
+    <input id="q" type="search" placeholder="Search name, category or chain" aria-label="Search">
+    <select id="cat" aria-label="Category"><option value="">All categories</option></select>
+    <select id="verdict" aria-label="Verdict">
+      <option value="">All verdicts</option>
+      <option value="F">FARM</option>
+      <option value="T">THIN</option>
+      <option value="S">SKIP</option>
+    </select>
+    <label class="check"><input id="wl" type="checkbox"> Watchlist only</label>
+    <select id="sort" aria-label="Sort">
+      <option value="rank">Sort: rank</option>
+      <option value="tvl">Sort: TVL</option>
+      <option value="growth">Sort: 7d growth</option>
+      <option value="age">Sort: age</option>
+      <option value="name">Sort: name</option>
+    </select>
+    <span id="count" class="count"></span>
+  </div>
+  <section id="detail" class="detail" hidden></section>
+  <table id="board">
+    <thead><tr>
+      <th class="num">#</th><th>Protocol</th><th>Category</th><th>Chain</th>
+      <th class="num">TVL</th><th class="num">7d</th><th class="num">Age</th>
+      <th class="num">Implied value</th><th class="num">80% interval</th><th>Verdict</th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="note">Implied value is this radar's own claim from a size curve fitted on 128 token-bearing comps (see the research note in the source). The verdict prices a $1,000, 12-week farm against gas: FARM if net &ge; $25 and &ge; 3&times; cost, THIN if net &gt; $0, SKIP otherwise. "Records no token" means DefiLlama records none, not that none exists.</p>
+</main>
+<footer class="wrap"><p>Token Launch Radar &middot; snapshot <span id="asof2"></span> &middot; model, filter audit and backtest: research note in the source.</p></footer>
+<script src="plans.js"></script>
+<script src="z-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
